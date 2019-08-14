@@ -7,12 +7,12 @@ public class Task extends TimerTask{
 
   public Task(String n, Transaction t){
     this.name = n;
-    transaction = t;
+    this.transaction = t;
   }
 
   @Override
   public void run() {
-    System.out.println(Thread.currentThread().getName()+" "+name+" the task has executed successfully "+ new Date());
+    System.out.println(this.transaction.getId()+" "+this.transaction.getData()+" "+this.transaction.getDate()+" "+name+" the task has executed successfully "+ new Date());
   }
 
 }

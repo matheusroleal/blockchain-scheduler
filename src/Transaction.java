@@ -3,11 +3,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Transaction {
-	private int id;
+	private String id;
 	private String data;
 	private Date date;
 	
-	public Transaction(int i,String d, String dt) throws ParseException {
+	public Transaction(String i,String d, String dt) throws ParseException {
 		id = i;
 		data = d;
 		date = convertDate(dt);
@@ -17,7 +17,7 @@ public class Transaction {
 		return data;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	
