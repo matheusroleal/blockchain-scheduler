@@ -1,3 +1,4 @@
+package Blockchain;
 import jota.error.ArgumentException;
 
 public interface Blockchain {
