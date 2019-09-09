@@ -1,26 +1,51 @@
 package util;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.TimerTask;
 
 import Blockchain.IOTA;
+import jota.model.Transfer;
 
 public class Task extends TimerTask{
   private String name ;
-  private Transaction transaction;
+  private List<Transaction> transaction;
   IOTA iota;
 
-  public Task(String n, Transaction t){
+  public Task(String n){
     this.name = n;
-    this.transaction = t;
-	iota = new IOTA("altnodes.devnet.iota.org","443");
+    this.transaction = new ArrayList<>();
+	
+    iota = new IOTA("nodes.devnet.thetangle.org","443");
+    iota.Connect();
+    iota.Configure("PUEOTSEITFEVEWCWBTSIZM9NKRGJEIMXTULBACGFRQK9IMGICLBKW9TTEVSDQMGWKBXPVCBMMCXWMNPDX");
+  }
+  
+  public void add(Transaction t) {
+	  this.transaction.add(t);
   }
 
   @Override
   public void run() {
-    System.out.println(this.transaction.getId()+" "+this.transaction.getData()+" "+this.transaction.getDate()+" "+name+" the task has executed successfully "+ new Date());
-    iota.Connect();
-    iota.Configure("PUEOTSEITFEVEWCWBTSIZM9NKRGJEIMXTULBACGFRQK9IMGICLBKW9TTEVSDQMGWKBXPVCBMMCXWMNPDX");
-    iota.Send(this.transaction.getData());
+	if( this.transaction.size() > 0) {
+		// INIT -- Período de testes		
+		System.out.println("Novos dados");
+		// END -- Período de testes
+		
+		List<Transaction> transactions_to_send = this.transaction;
+		this.transaction.clear();
+
+		// INIT -- Período de testes		
+		System.out.println(this.transaction.size());
+		System.out.println(transactions_to_send.size());
+		// END -- Período de testes		
+
+		iota.Send(transactions_to_send);
+	    
+	    transactions_to_send.clear();
+	}else {
+		System.out.println("Sem Novos dados");
+	}
   }
 
 }

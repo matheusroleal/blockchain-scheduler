@@ -5,17 +5,21 @@ public class Scheduler {
 	static Timer ti;
 	long delay;
 	int num_tasks;
+	Task newTask;
 	
 	public Scheduler() {
-      ti = new Timer();
-      delay = 10000;
-      num_tasks = 0;
+		newTask = new Task("Task"+num_tasks);
+		
+		ti = new Timer();
+		delay = 50000;
+		num_tasks = 0;
+		
+		ti.scheduleAtFixedRate(newTask, delay, 60000);
 	}
 	
 	public void enqueue_in(Transaction t) {
-		Task newTask = new Task("Task"+num_tasks, t);
-		ti.schedule(newTask, delay);
 		num_tasks = num_tasks + 1;
+		newTask.add(t);
 	}
 
 }
