@@ -1,5 +1,6 @@
 package Blockchain;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,6 @@ import jota.dto.response.GetNewAddressResponse;
 import jota.dto.response.GetNodeInfoResponse;
 import jota.dto.response.SendTransferResponse;
 import jota.error.ArgumentException;
-import jota.model.Input;
-import jota.model.Transaction;
 import jota.model.Transfer;
 import jota.utils.TrytesConverter;
 
@@ -33,7 +32,7 @@ public class IOTA implements Blockchain {
 	public IOTA(String url, String port) {
 		iota_port = port;
 		iota_url = url;
-		Depth = 9; // constant defined by IOTA - how deep to look for the tips in the Tangle
+		Depth = 4; // constant defined by IOTA - how deep to look for the tips in the Tangle
 		MinWeightMagnitude = 14; // constant defined by IOTA - the difficulty of PoW
 		tag = "JOTASPAM9999999999999999999";
 	}
@@ -55,16 +54,20 @@ public class IOTA implements Blockchain {
 		return false;
     }
  
-    public void Send(String message) {
+    public void Send(List<util.Transaction> messages) {
     	List<Transfer> transfers = new ArrayList<>();
     	
-    	transfers.add(new Transfer(address, 0, StringUtils.rightPad(TrytesConverter.toTrytes(message), 2188, '9'), tag));
+    	System.out.println(new Timestamp(System.currentTimeMillis()));
+    	
+    	messages.forEach(message->{
+    		transfers.add(new Transfer(address, 0, StringUtils.rightPad(TrytesConverter.toTrytes(message.getData()), 2188, '9'), tag));
+    	});
 
     	try {
 			SendTransferResponse res = api.sendTransfer(seed, 2, Depth, MinWeightMagnitude, transfers, null, null, false);
-    		System.out.println(res.getTransactions().size());
-    		System.out.println(res.getTransactions());
-    		System.out.println(res.getSuccessfully());
+    		if(res.getSuccessfully() != null){
+    	    	System.out.println(new Timestamp(System.currentTimeMillis()));
+    		}
     	} catch (ArgumentException e) {
 			e.printStackTrace();
 		}  
