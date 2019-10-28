@@ -9,7 +9,7 @@ import br.pucrio.inf.lac.util.Enqueue;
 public class main {
 
 	public main() throws ParseException, InterruptedException{
-		Enqueue e = new Enqueue();
+		Enqueue e = new Enqueue("IOTA");
 	    BufferedReader csvReader;
 		try {
 			csvReader = new BufferedReader(new FileReader("/Users/matheus.leal/git/MobileHubTest/src/data-1565977199229.csv"));

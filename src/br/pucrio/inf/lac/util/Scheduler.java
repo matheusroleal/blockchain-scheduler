@@ -7,8 +7,8 @@ public class Scheduler {
 	int num_tasks;
 	Task newTask;
 	
-	public Scheduler() {
-		newTask = new Task("Task"+num_tasks);
+	public Scheduler(String type) {
+		newTask = new Task("Task"+num_tasks, type);
 		
 		ti = new Timer();
 		delay = 50000;

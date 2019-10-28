@@ -10,8 +10,8 @@ public class Enqueue {
 	
 	Scheduler s;
 	
-	public Enqueue() {
-		s = new Scheduler();
+	public Enqueue(String type) {
+		s = new Scheduler(type);
 	}
 	
 	public void addData(String d) {
