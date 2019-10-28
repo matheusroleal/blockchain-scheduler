@@ -1,4 +1,4 @@
-package Blockchain;
+package br.pucrio.inf.lac.Blockchain;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import com.github.iotexproject.antenna.protocol.TransferRequest;
 import com.github.iotexproject.antenna.rpc.RPCMethod;
 import com.github.iotexproject.antenna.utils.Numeric;
 
+import br.pucrio.inf.lac.util.Transaction;
 import jota.model.Transfer;
 import jota.utils.TrytesConverter;
-import util.Transaction;
 
 public class IoTex implements Blockchain {
 	IOTX api;

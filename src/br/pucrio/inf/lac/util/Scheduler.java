@@ -1,4 +1,4 @@
-package util;
+package br.pucrio.inf.lac.util;
 import java.util.Timer;
 
 public class Scheduler {

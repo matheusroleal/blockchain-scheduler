@@ -1,4 +1,4 @@
-package util;
+package br.pucrio.inf.lac.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

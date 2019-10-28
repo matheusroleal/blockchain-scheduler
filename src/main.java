@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
-import util.Enqueue;
+import br.pucrio.inf.lac.util.Enqueue;
 
 public class main {
 

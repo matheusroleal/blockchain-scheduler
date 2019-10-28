@@ -1,10 +1,10 @@
-package util;
+package br.pucrio.inf.lac.util;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimerTask;
 
-import Blockchain.IOTA;
+import br.pucrio.inf.lac.Blockchain.IOTA;
 import jota.model.Transfer;
 
 public class Task extends TimerTask{

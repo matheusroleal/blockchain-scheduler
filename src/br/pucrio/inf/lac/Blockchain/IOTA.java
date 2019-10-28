@@ -1,4 +1,4 @@
-package Blockchain;
+package br.pucrio.inf.lac.Blockchain;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class IOTA implements Blockchain {
 		return false;
     }
  
-    public void Send(List<util.Transaction> messages) {
+    public void Send(List<br.pucrio.inf.lac.util.Transaction> messages) {
     	List<Transfer> transfers = new ArrayList<>();
     	
     	System.out.println(new Timestamp(System.currentTimeMillis()));
