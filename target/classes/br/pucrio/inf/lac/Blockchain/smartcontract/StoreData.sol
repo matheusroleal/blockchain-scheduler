@@ -1,4 +1,4 @@
-pragma experimental ABIEncoderV2;
+pragma solidity ^0.5.12;
 
 contract StoreData {
 
@@ -6,13 +6,7 @@ contract StoreData {
     mapping (string => bool) private transaction;
     mapping (string => string) private data;
 
-    // Store file transaction data
-    struct Transfer {
-        string transactionId;
-        string data;
-    }
-
-    Transfer[] transactions;
+    string transactions;
 
     function setTransaction(string memory data_to_send) public payable {
         // Change sender to string
@@ -23,10 +17,10 @@ contract StoreData {
         transaction[transaction_id] = true;
         data[transaction_id] = data_to_send;
         // Store data of the transaction
-        transactions.push(Transfer({transactionId: transaction_id, data: data_to_send}));
+        transactions = strConcat(transactions,transaction_id);
     }
 
-    function getTransctions() public payable returns(Transfer [] memory){
+    function getTransctions() public payable returns(string memory){
         return transactions;
     }
 
@@ -35,7 +29,7 @@ contract StoreData {
         return data[tran_id];
     }
 
-    // Utils fun
+    // Utils function
     function toString(address x)private returns (string memory) {
         bytes memory b = new bytes(20);
         for (uint i = 0; i < 20; i++){
@@ -47,5 +41,17 @@ contract StoreData {
     function Time_call()private returns (uint256){
         return now;
     }
+    
+    function strConcat(string memory _a, string memory _b) internal returns (string memory){
+	    bytes memory _ba = bytes(_a);
+	    bytes memory _bb = bytes(_b);
+	    string memory ab = new string(_ba.length + _bb.length);
+	    bytes memory bab = bytes(ab);
+	    uint k = 0;
+	    for (uint i = 0; i < _ba.length; i++) bab[k++] = _ba[i];
+	    for (uint i = 0; i < _bb.length; i++) bab[k++] = _bb[i];
+	    return string(bab);
+	}
+    
 
 }
