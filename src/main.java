@@ -12,7 +12,7 @@ public class main {
 		Enqueue e = new Enqueue("IOTA");
 	    BufferedReader csvReader;
 		try {
-			csvReader = new BufferedReader(new FileReader("/Users/matheus.leal/git/MobileHubTest/src/data-1565977199229.csv"));
+			csvReader = new BufferedReader(new FileReader("files/data-1565977199229.csv"));
 			String row;
 			while ((row = csvReader.readLine()) != null) {
 				String serializableContent = row;
