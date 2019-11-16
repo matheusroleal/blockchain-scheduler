@@ -1,8 +1,6 @@
 package br.pucrio.inf.lac.Blockchain;
 import java.util.List;
 
-import jota.error.ArgumentException;
-
 public interface Blockchain {
 	//	Connect to the specific blockchain
 	public boolean Connect();
