@@ -29,10 +29,12 @@
             <artifactId>commons-cli</artifactId>
             <version>1.4</version>
         </dependency>
-        <dependency>
+		<dependency>
     		<groupId>br.pucrio.inf.lac</groupId>
     		<artifactId>contextnet</artifactId>
-    		<version>2.5</version>
+    		<version>2.7</version>
+    		<scope>system</scope>
+    		<systemPath>${project.basedir}/contextnet-2.7.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.web3j</groupId>
@@ -87,10 +89,6 @@
 		    <id>bintray-iotaledger-maven</id>
 		    <name>bintray</name>
 			<url>https://dl.bintray.com/iotaledger/maven</url>
-		</repository>
-        <repository>
-    		<id>LAC PUC-Rio</id>
-		    <url>https://bitbucket.org/endler/contextnet-dependencies/raw/master/</url>
 		</repository>
     </repositories>
 </project>
