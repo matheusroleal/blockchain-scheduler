@@ -8,7 +8,7 @@ contract StoreData {
 
     string transactions;
 
-    function setTransaction(string memory data_to_send) public payable {
+    function setTransaction(string memory data_to_send) public {
         // Change sender to string
         string memory transaction_sender = toString(msg.sender);
         // Concatenate sender and time in one string
@@ -20,7 +20,7 @@ contract StoreData {
         transactions = strConcat(transactions,transaction_id);
     }
 
-    function getTransctions() public payable returns(string memory){
+    function getTransctions() public returns(string memory){
         return transactions;
     }
 

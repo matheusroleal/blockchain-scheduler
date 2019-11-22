@@ -2,10 +2,13 @@ package br.pucrio.inf.lac.Blockchain;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.methods.response.EthBlockNumber;
 import org.web3j.protocol.core.methods.response.EthGasPrice;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
@@ -29,13 +32,14 @@ public class Ethereum implements Blockchain {
 		eth_port = port;
 		eth_url = url;
 		
-		credentials = Credentials.create("0x8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63");
+		credentials = Credentials.create("20eefd03416671a858ca1021c083047427996e565da49af318382919f15be93a");
 	}
 
 	public boolean Connect() {
-		web3 = Web3j.build(new HttpService("http://"+eth_url+":"+eth_port));
+		web3 = Web3j.build(new HttpService("https://"+eth_url));
 
 		try {
+			
 			// web3_clientVersion returns the current client version.
 			Web3ClientVersion clientVersion = web3.web3ClientVersion().send();
 
@@ -58,29 +62,28 @@ public class Ethereum implements Blockchain {
 
 	}
 
-	public void Send(List<Transaction> messages) {
-		// TODO Auto-generated method stub
+	public void Send(List<Transaction> messages) {		
+		
+    	System.out.println(new Timestamp(System.currentTimeMillis()));
 
-		BigInteger wei = new BigInteger("1000");
-
-		messages.forEach(message -> {
+    	messages.forEach(message -> {
 			TransactionReceipt result;
 			try {
-				result = contract.setTransaction(message.getData(), wei).send();
-				System.out.println(result.toString());
+				result = contract.setTransaction(message.getData()).send();
+				System.out.println(result.getBlockHash());
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		});
 
+    	System.out.println(new Timestamp(System.currentTimeMillis()));
 	}
 
 	public void Configure(String s) {
 		try {
-			StoreData registryContract = contract.deploy(web3, credentials, new DefaultGasProvider()).send();
-			
-			String contractAddress = registryContract.getContractAddress();
+			contract = StoreData.deploy(web3, credentials, new DefaultGasProvider()).send();
+			String contractAddress = contract.getContractAddress();
+
 			System.out.println(contractAddress);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
