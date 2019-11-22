@@ -3,10 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
 
-import br.pucrio.inf.lac.Blockchain.IOTA;
-import br.pucrio.inf.lac.Blockchain.IoTex;
 import br.pucrio.inf.lac.Blockchain.Current;
-import br.pucrio.inf.lac.Blockchain.Ethereum;
 
 public class Task extends TimerTask{
   private String name ;

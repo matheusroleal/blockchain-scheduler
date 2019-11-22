@@ -11,7 +11,7 @@ public class Scheduler {
 		newTask = new Task("Task"+num_tasks, type);
 		
 		ti = new Timer();
-		delay = 50000;
+		delay = 480000;
 		num_tasks = 0;
 		
 		ti.scheduleAtFixedRate(newTask, delay, 60000);
