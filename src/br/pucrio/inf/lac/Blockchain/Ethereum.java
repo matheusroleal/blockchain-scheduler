@@ -67,10 +67,9 @@ public class Ethereum implements Blockchain {
     	System.out.println(new Timestamp(System.currentTimeMillis()));
 
     	messages.forEach(message -> {
-			TransactionReceipt result;
+			CompletableFuture<TransactionReceipt> result;
 			try {
-				result = contract.setTransaction(message.getData()).send();
-				System.out.println(result.getBlockHash());
+				result = contract.setTransaction(message.getData()).sendAsync();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
