@@ -16,7 +16,7 @@ public class Current {
 	public Current() {
 		if (BlockchainType == "IOTA") {
 	    
-			iota = new IOTA("nodes.devnet.thetangle.org","443");
+			iota = new IOTA("altnodes.devnet.iota.org","443");
 	        iota.Connect();
 	        iota.Configure("PUEOTSEITFEVEWCWBTSIZM9NKRGJEIMXTULBACGFRQK9IMGICLBKW9TTEVSDQMGWKBXPVCBMMCXWMNPDX");	
 	    
