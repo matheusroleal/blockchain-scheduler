@@ -9,7 +9,6 @@ import org.web3j.abi.datatypes.Type;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.RemoteCall;
-import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
 import org.web3j.tx.TransactionManager;
@@ -52,7 +51,7 @@ public class StoreData extends Contract {
         super(BINARY, contractAddress, web3j, transactionManager, contractGasProvider);
     }
 
-    public RemoteFunctionCall<TransactionReceipt> getData(String tran_id) {
+    public RemoteCall<TransactionReceipt> getData(String tran_id) {
         final Function function = new Function(
                 FUNC_GETDATA, 
                 Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(tran_id)), 
@@ -60,7 +59,7 @@ public class StoreData extends Contract {
         return executeRemoteCallTransaction(function);
     }
 
-    public RemoteFunctionCall<TransactionReceipt> getTransctions() {
+    public RemoteCall<TransactionReceipt> getTransctions() {
         final Function function = new Function(
                 FUNC_GETTRANSCTIONS, 
                 Arrays.<Type>asList(), 
@@ -68,7 +67,7 @@ public class StoreData extends Contract {
         return executeRemoteCallTransaction(function);
     }
 
-    public RemoteFunctionCall<TransactionReceipt> setTransaction(String data_to_send) {
+    public RemoteCall<TransactionReceipt> setTransaction(String data_to_send) {
         final Function function = new Function(
                 FUNC_SETTRANSACTION, 
                 Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(data_to_send)), 
