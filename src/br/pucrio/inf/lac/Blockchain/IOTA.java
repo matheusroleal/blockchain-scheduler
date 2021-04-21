@@ -1,6 +1,5 @@
 package br.pucrio.inf.lac.Blockchain;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,8 +55,6 @@ public class IOTA implements Blockchain {
     public void Send(List<br.pucrio.inf.lac.util.Transaction> messages) {
     	List<Transfer> transfers = new ArrayList<>();
     	
-    	System.out.println(new Timestamp(System.currentTimeMillis()));
-    	
     	messages.forEach(message->{
     		transfers.add(new Transfer(address, 0, StringUtils.rightPad(TrytesConverter.toTrytes(message.getData()), 2188, '9'), tag));
     	});
@@ -65,7 +62,7 @@ public class IOTA implements Blockchain {
     	try {
 			SendTransferResponse res = api.sendTransfer(seed, 2, Depth, MinWeightMagnitude, transfers, null, null, false);
     		if(res.getSuccessfully() != null){
-    	    	System.out.println(new Timestamp(System.currentTimeMillis()));
+    	    	System.out.println("Bulk messages sent");
     		}
     	} catch (ArgumentException e) {
 			e.printStackTrace();

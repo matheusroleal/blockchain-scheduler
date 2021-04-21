@@ -1,14 +1,11 @@
 package br.pucrio.inf.lac.Blockchain;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
-import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.methods.response.EthBlockNumber;
 import org.web3j.protocol.core.methods.response.EthGasPrice;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
@@ -63,9 +60,6 @@ public class Ethereum implements Blockchain {
 	}
 
 	public void Send(List<Transaction> messages) {		
-		
-    	System.out.println(new Timestamp(System.currentTimeMillis()));
-
     	messages.forEach(message -> {
 			CompletableFuture<TransactionReceipt> result;
 			try {
@@ -74,8 +68,6 @@ public class Ethereum implements Blockchain {
 				e.printStackTrace();
 			}
 		});
-
-    	System.out.println(new Timestamp(System.currentTimeMillis()));
 	}
 
 	public void Configure(String s) {

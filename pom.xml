@@ -4,7 +4,7 @@
     <artifactId>blockchain-sender-scheduler</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>Blockchain Sender Scheduler</name>
-    <description>Tools to schedule transaction to a blockchain.</description>
+    <description>Tool to schedule transaction to a blockchain.</description>
     <licenses>
         <license>
             <name>MIT License</name>
@@ -32,13 +32,6 @@
 	    	<artifactId>core</artifactId>
 	    	<version>4.3.0</version>
 	    </dependency>
-	    <dependency>
-    		<groupId>br.pucrio.inf.lac</groupId>
-    		<artifactId>contextnet</artifactId>
-    		<version>2.7</version>
-    		<scope>system</scope>
-    		<systemPath>${project.basedir}/contextnet-2.7.jar</systemPath>
-		</dependency>
     </dependencies>
     <build>
         <plugins>
