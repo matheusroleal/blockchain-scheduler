@@ -40,7 +40,7 @@ public class Current {
     }
 	
 	public void Connected() {
-		System.out.println("Checking blockchain connection...ß");
+		System.out.println("Checking blockchain connection...");
 	}
 	
 	public void Send(List<Transaction> transactions_to_send) {

@@ -2,19 +2,14 @@ package br.pucrio.inf.lac.Blockchain;
 
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.github.iotexproject.antenna.account.Account;
 import com.github.iotexproject.antenna.account.IotexAccount;
 import com.github.iotexproject.antenna.contract.Contract;
 import com.github.iotexproject.antenna.protocol.IOTX;
-import com.github.iotexproject.antenna.protocol.TransferRequest;
 import com.github.iotexproject.antenna.rpc.RPCMethod;
 import com.github.iotexproject.antenna.utils.Numeric;
 
 import br.pucrio.inf.lac.util.Transaction;
-import jota.model.Transfer;
-import jota.utils.TrytesConverter;
 
 public class IoTex implements Blockchain {
 	IOTX api;
